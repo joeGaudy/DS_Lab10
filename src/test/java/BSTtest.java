@@ -4,14 +4,16 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.ArrayList;
 
-class BSTreeTest {
+class BSTreeTest 
+{
 
 	@BeforeEach
 
 	
 	
 	@Test
-	void test() {
+	void test() 
+	{
 		int [] A = {50,72,96,94,107,26,12,11,9,10,25,51,16,17,95};
 		int [] B = {50,72,96,94,107,26,12,11,9,10,25,51,16,17,95,450};
 		int [] C = {9,10,11,12,16,17,25,26,50,51,72,94,95,96,107};
@@ -22,7 +24,7 @@ class BSTreeTest {
 		BSTree BST5 = new BSTree();
 		BSTree tree = new BSTree();
 		BSTree tree2 = new BSTree();
-
+	
 		for(int i = 0; i < A.length; i++) 
 		{
 			tree.insert(A[i]);
@@ -45,10 +47,10 @@ class BSTreeTest {
 		BST1.insert(15);
 		BST1.insert(51);
 		BST1.insert(36);
-
+	
 		assertEquals(3, BST1.retrieveDepth(15));
 		assertEquals(2, BST1.retrieveDepth(70));
-
+	
 		assertEquals(7,BST1.getSize());
 		assertEquals(69, BST1.largest());
 		assertEquals(null, BST3.largest());
@@ -62,13 +64,13 @@ class BSTreeTest {
 		BSTE.insert(15);
 		BSTE.insert(51);
 		BSTE.insert(36);
-
+	
 		assertTrue(compList(BST1,BSTE));
 		assertFalse(compList(BST1,BST4));
 		assertTrue(compList(BST1,BST1));
 		assertTrue(compList(BST3,BST5));
 		assertFalse(compList(BST4, BST5));
-
+	
 		assertTrue(BSTE.myEquals(BST1)); //Test true, false, empty empty (true),( empty full, full empty ) false
 		assertFalse(BST4.myEquals(BST1));
 		assertTrue(BST3.myEquals(BST5)); // empty empty (true)
@@ -80,20 +82,20 @@ class BSTreeTest {
 		int [] D51 = {50,72,96,94,107,26,12,11,9,10,25,16,17,95};
 		int [] E51A = {50,72,96,94,107,26,12,11,9,10,25,51,16,17,95,51};
 		List<Integer> AB = new ArrayList<Integer>();
-
+	
 		for(int i = 0; i < C.length; i++) 
 		{
 			AB.add(C[i]);
 		}
-
+	
 		assertEquals(AB,tree.toList());
 		treeEquals(tree,B10,false);
 		treeEquals(tree,C18A,false);
 		treeEquals(tree,D51,false);
 		treeEquals(tree,E51A,false);
-
-	}
 	
+	}
+
 	public boolean compList(BSTree BST1, BSTree BST2) 
 	{
 		boolean samelist = true;
@@ -107,7 +109,8 @@ class BSTreeTest {
 		return samelist;
 	}
 
-	public void treeEquals(BSTree BST1, int [] A, boolean truth) {
+	public void treeEquals(BSTree BST1, int [] A, boolean truth) 
+	{
 		BSTree BSTfresh = new BSTree();
 		for(int i = 0; i < A.length; i++) 
 		{
