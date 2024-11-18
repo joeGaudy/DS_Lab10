@@ -29,10 +29,12 @@ class BSTreeTest
 		{
 			tree.insert(A[i]);
 		}
+		
 		for(int i = 0; i < B.length; i++) 
 		{
 			tree2.insert(B[i]);
 		}
+		
 		BST4.insert(12);
 		assertEquals(0,BST1.getSize());
 		assertTrue(BST1.isEmpty());
@@ -77,10 +79,12 @@ class BSTreeTest
 		assertFalse(BST4.myEquals(BST5));  // full empty (false)
 		assertFalse(BST5.myEquals(BST4));  //empty full (false)
 		treeEquals(BST1,A,false);
+		
 		int [] B10 = {50, 72, 96, 94, 107, 26,12,11,9,25,51,16,17,95};
 		int [] C18A = {50,72,96,94,107,26,12,11,9,10,25,51,16,17,95,18};
 		int [] D51 = {50,72,96,94,107,26,12,11,9,10,25,16,17,95};
 		int [] E51A = {50,72,96,94,107,26,12,11,9,10,25,51,16,17,95,51};
+		
 		List<Integer> AB = new ArrayList<Integer>();
 	
 		for(int i = 0; i < C.length; i++) 
