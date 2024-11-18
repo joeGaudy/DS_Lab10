@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.ArrayList;
 
-class BSTreeTest 
+class BSTtest 
 {
 
 	@BeforeEach
