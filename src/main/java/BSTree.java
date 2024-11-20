@@ -11,8 +11,7 @@ public class BSTree
 
    public BSTree()
    {
-   
-       
+	   root = null;
    }
 
     /**
@@ -29,6 +28,13 @@ public class BSTree
      */
    public void insert(Integer target)
    {
+	   if(this.isEmpty() == true)
+	   {
+		   root = new BSTNode<Integer>(target);
+	   }else
+	   {
+	   root.insert(target);
+	   }
    }
 
 
@@ -38,7 +44,11 @@ public class BSTree
      */
    public Integer retrieve(Integer target)
    {
-	return null;
+	   if(this.isEmpty() == true)
+	   {
+		   return null;
+	   }
+	   return root.retrieve(target);
    }
 
 
@@ -52,8 +62,11 @@ public class BSTree
      */
    public int retrieveDepth(Integer target)
    {
-	return 0;
-       
+	   if(this.isEmpty() == true)
+	   {
+		   return 0;
+	   }
+       return root.retrieveDepth(target);
    }
 
     
@@ -95,8 +108,11 @@ public class BSTree
     */
    public Integer largest()
    {
-	return null;
-   
+	   if(this.isEmpty() == true)
+	   {
+		   return null;
+	   }
+	   return root.getLargest();
    }
 
 
@@ -120,6 +136,7 @@ public class BSTree
                public void accept(Integer i)
                {
                //need to add some code here...
+            	   L.add(i);
                }
             });
       }
@@ -134,9 +151,27 @@ public class BSTree
     /*
       Returns the sum of all the integers in the Tree
      */
+  
+   class SizeConsumer implements Consumer<Integer>
+   {
+      public int sum = 0;
+   
+      public void accept(Integer val)
+      {
+    	  sum += val;
+      }
+   
+   }
+   
    public int sum()
    {
-	return 0;
+	   if(root == null)
+	   {
+		   return 0;
+	   }
+	   SizeConsumer count = new SizeConsumer();
+	   root.inOrderTraversal(count);
+	   return count.sum;
    }
 
 

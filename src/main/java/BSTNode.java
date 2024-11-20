@@ -24,6 +24,9 @@ public class BSTNode<T extends Comparable<T>>
 
    public BSTNode(T val, BSTNode<T> l,BSTNode<T> r)
    {
+	   this.val = val;
+	   this.left = l;
+	   this.right = r;
    }
 
 
@@ -33,6 +36,24 @@ public class BSTNode<T extends Comparable<T>>
     */
    public void insert(T target)
    {
+	   if(target.compareTo(this.val) > 0 && this.right == null)
+	   {
+		   this.right = new BSTNode<T>(target);
+	   }
+	   if(target.compareTo(this.val) < 0 && this.left == null)
+	   {
+		   this.left = new BSTNode<T>(target);
+	   }
+	   if(target.compareTo(this.val) > 0)
+	   {
+		   BSTNode<T> curr = this.right;
+		   curr.insert(target);
+	   }
+	   if(target.compareTo(this.val) < 0)
+	   {
+		   BSTNode<T> curr = this.left;
+		   curr.insert(target);
+	   }
    }
 
 
@@ -42,7 +63,33 @@ public class BSTNode<T extends Comparable<T>>
     */
    public T retrieve(T target)
    {
-	return target;
+	   if(target.compareTo(this.val) == 0)
+	   {
+		   return this.val;
+	   }
+	   if(target.compareTo(this.val) > 0)
+	   {
+		   BSTNode<T> curr = this.right;
+		   if(curr == null)
+		   {
+			   return null;
+		   }else
+		   {
+			   return curr.retrieve(target);
+		   }
+	   }
+	   if(target.compareTo(this.val) < 0)
+	   {
+		   BSTNode<T> curr = this.left;
+		   if(curr == null)
+		   {
+			   return null;
+		   }else
+		   {
+			   return curr.retrieve(target);
+		   }
+	   }
+	   return null;
    }
 
 
@@ -52,7 +99,29 @@ public class BSTNode<T extends Comparable<T>>
      */
    public int retrieveDepth(T target)
    {
-	return 0;
+	   if(target.compareTo(this.val) == 0)
+	   {
+		   return 0;
+	   }
+	   if(target.compareTo(this.val) > 0 && this.right == null)
+	   {
+		   return 1;
+	   }
+	   if(target.compareTo(this.val) < 0 && this.left == null)
+	   {
+		  return 1;
+	   }
+	   if(target.compareTo(this.val) > 0)
+	   {
+		   BSTNode<T> curr = this.right;
+		   return 1 + curr.retrieveDepth(target);
+	   }
+	   if(target.compareTo(this.val) < 0)
+	   {
+		   BSTNode<T> curr = this.left;
+		   return 1 + curr.retrieveDepth(target);
+	   }
+	   return 0;
    }
 
    /**
@@ -60,7 +129,23 @@ public class BSTNode<T extends Comparable<T>>
     */
    public T getLargest()
    {
-	return null;
+	   if(this.right == null)
+	   {
+		   return this.val;
+	   }else
+	   {
+		   BSTNode<T> curr = this.right;
+		   return curr.getLargest();
+	   }
+   }
+   
+   public int sum()
+   {
+	   if(this.left != null)
+	   {
+		   return this.left.sum();
+	   }
+	   return (int) this.val + this.left.sum() + this.right.sum();
    }
 
 
@@ -72,7 +157,15 @@ public class BSTNode<T extends Comparable<T>>
     */
    public void inOrderTraversal(Consumer<T> consume)
    {
-
+	   if(this.left != null)
+	   {
+		   this.left.inOrderTraversal(consume);
+	   }
+	   consume.accept(val);
+	   if(this.right != null)
+	   {
+		   this.right.inOrderTraversal(consume);
+	   }
    }
 
 
