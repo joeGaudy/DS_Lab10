@@ -138,16 +138,6 @@ public class BSTNode<T extends Comparable<T>>
 		   return curr.getLargest();
 	   }
    }
-   
-   public int sum()
-   {
-	   if(this.left != null)
-	   {
-		   return this.left.sum();
-	   }
-	   return (int) this.val + this.left.sum() + this.right.sum();
-   }
-
 
    /**
       Uses recursion to do an inorder traversals.
