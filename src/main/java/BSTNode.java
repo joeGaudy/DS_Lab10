@@ -170,9 +170,35 @@ public class BSTNode<T extends Comparable<T>>
     */
    public boolean myEquals(BSTNode<T> that)
    {
-	return false;
-   
-
+	   if (!this.val.equals(that.val))
+	   {
+		   return false;
+	   }
+	   if (this.right == null && that.right != null)
+	   {
+		   return false;
+	   }
+	   if (this.right != null && that.right == null)
+	   {
+		   return false;
+	   }
+	   if (this.left == null && that.left != null)
+	   {
+		   return false;
+	   }
+	   if (this.left != null && that.left == null)
+	   {
+		   return false;
+	   }
+	   if (this.left != null && !this.left.myEquals(that.left))
+	   {
+		   return false;
+	   }
+	   if (this.right != null && !this.right.myEquals(that.right))
+	   {
+		   return false;
+	   }
+	  return true;
    }
 
 }

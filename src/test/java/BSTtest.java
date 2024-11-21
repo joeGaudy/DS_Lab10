@@ -42,7 +42,7 @@ class BSTtest
 		assertFalse(BST1.isEmpty());
 		assertEquals(50,BST1.retrieve(50));
 		assertNull(BST1.retrieve(49));
-		assertEquals(BST1.getSize(), 1);
+		assertEquals(1, BST1.getSize());
 		BST1.insert(35);
 		BST1.insert(69);
 		BST1.insert(21);
